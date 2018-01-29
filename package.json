@@ -1,0 +1,61 @@
+{
+  "name": "@mitmaro/dependency-manager",
+  "version": "0.0.1",
+  "description": "A node dependency loader and manager",
+  "main": "lib/dependency-manager.js",
+  "files": [
+    "lib"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "types": "lib/dependency-manager.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MitMaro/node-dependency-manager.git"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "scripts": {
+    "build": "./scripts/build.bash",
+    "lint": "./scripts/lint.bash",
+    "test": "./scripts/lint.bash && ./scripts/test.bash",
+    "test:unit": "./scripts/test.bash :unit",
+    "test:unit:coverage": "./scripts/test.bash :coverage"
+  },
+  "author": "Tim Oram <dev@mitmaro.ca>",
+  "contributors": [
+    "Tim Oram <dev@mitmaro.ca>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.39",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/plugin-transform-async-to-generator": "^7.0.0-beta.39",
+    "@babel/register": "^7.0.0-beta.39",
+    "@mitmaro/build-scripts": "^0.1.5",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.17.0",
+    "eslint-config-mitmaro": "^3.0.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-security": "^1.4.0",
+    "mocha": "^4.1.0",
+    "nyc": "11.3.0",
+    "sinon": "^4.2.2",
+    "sinon-chai": "^2.14.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1"
+  },
+  "dependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "lodash.snakecase": "^4.1.1"
+  }
+}
