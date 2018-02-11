@@ -16,8 +16,9 @@ jobs:
     - stage: test
       node_js: 8
       before_script: npm install coveralls
-      script: ./scripts/test.bash :coverage
-      script: ./scripts/lint.bash
+      script:
+        - ./scripts/lint.bash
+        - ./scripts/test.bash :coverage
       after_script: nyc report --reporter=text-lcov | coveralls
     - stage: test
       node_js: 6
