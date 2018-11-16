@@ -1,5 +1,8 @@
+--require ts-node/register
+--require test/mocha-bootstrap.ts
 --recursive
 --check-leaks
---require ./test/mocha-bootstrap.js
 --reporter spec
+--watch-extensions ts,js
 --colors
+test/**/*.spec.ts

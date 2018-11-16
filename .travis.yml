@@ -14,24 +14,25 @@ stages:
 jobs:
   include:
     - stage: test
+      node_js: 10
+      script: ./scripts/test.bash :unit
+    - stage: test
       node_js: 8
       before_script: npm install coveralls
       script:
-        - ./scripts/lint.bash
         - ./scripts/test.bash :coverage
+        - ./scripts/lint.bash
       after_script: nyc report --reporter=text-lcov | coveralls
-    - stage: test
-      node_js: 6
-      script: ./scripts/test.bash :unit --require @babel/register
     - stage: deploy
       node_js: 8
+      skip_cleanup: true
       script: ./scripts/build.bash
       deploy:
         provider: npm
         email: mitmaro@gmail.com
         skip_cleanup: true
         api_key:
-          secure: K2ovotyW93shnP+1twBSkXUqWWfkZkXmpzyhZ0EdRbMcm90aWsJr49IsPvN9df0Wd9idoe5D/q4Bn0SJu8LLpMvgk2XYzlznF3PtNl6uZFdXqYhYc2zKIO8u1R9SuFrBi5hiLoQwPdPnk+dOBSBZ+rHCs/U0z+d3eslidnJj1NeT/zBCxTo0KciDK0fnMdX47I14j7uvTtM5yyUoqjMtV5Xtj0OpQxqn26hqoTuTOiPnJWf1EWbmTGAx+iNT7GJ3PWz6y5D9XBoXC759LJn4kLnNFcf6MDxMAneLoisYHne+DljYqurTZxgU6YmvsaRjZMw5Tx6gV43RHuCzpfUS0Uq/v84CGPn2Y9zwpOMBVvHuRlA0gjj8qq5wUJ3kuPi1MgX4ArKSL1M1XkVcgleUl0yGAbKPlAdknNOeFn0jkU/ihvNsIGbhofdEjX464bZEIvAj0+on9E8b9E4dp4yyvZ3uAJAzGV6a1yoJMl52YQZ4tx4oUu5NHFo8yMXL73xgddKV43+OUomk0aspo/rbGVOHksDVntc292heTtikJDLoZsNl7fyWkoiFKJ4QVUBv37UlGgXXdSJ0WkcgUatvC6WDiO6+OvHhRuF2XN+vf3iXnpUlyqtNKLpDNxOrSlypBMxDZ7pAPCGstTTEteqKoB+RAMU3jBmLPEqUFmTpzQQ=
+          secure: "GIF/xa6bKBvOt9qUWKgifHzwIVgctKy1HMAhuNGzbST/lK0h9YD3ad50WqzXfpCDhzbHAd45JbS1ksszA6n9+S+xEL1aImeyj6x2k4KTtocW0d2W6w6erLLtB0CtTtF8wJwnhrB36sEWs8b1Hrh/onJ/Rrm2fE5zA6Xz4uLlX02r4fNIhorIhly2LT32Bz4T4C9z4bAbpJTVWqUQbK6XNdz8R2voJeMdmXuD8ESIsWIUIE7UUmaBpH8SC16lqUPcAn0AlDk7Y23zWnGUL9mad2KgwK0t2FQyfBP20kdx7wsGD1/rH5ACoTAWGIow3GwpDlE09g2g461jxHlwdek5q3E8KXs1IzIxp1AKgmHt+7CGlCSC9eIhDS1dcmpFU0GbhDKgqsiOVPH6v98qdtE4oJRp2Of0UlP8oXd7k1bxX77dDRnleYyZvm1S78V8NBDtyY1kvfmTdHaKfkr4FOq1lrbv1u6WKyrIKLB7bm9dasxySVzUUhDvnM9cFePALaXI3aI5Xe2PgkqCC6IB0HipB4WufAYV4rrGAl4tVmXLCny1MSnHvKH8B49Dyz3N73YYeVorV8qb4Ib/fyH98nrEQjuoDV4dRmaRZqMPPK4f8ZGhD1BaO34/JugL6WM6PZ7EEI426cPPiuQTokfbLe+9S3gHzE0mw3CEhjSu/+ZWh+8="
         on:
           tags: true
           repo: MitMaro/node-dependency-manager

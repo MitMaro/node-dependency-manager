@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")" && source "./common.bash"
+
+export NODE_ENV=test
+
 task="${1-}"
 shift 1 || true
 

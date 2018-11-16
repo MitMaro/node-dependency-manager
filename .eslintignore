@@ -1,5 +1,7 @@
-.nyc_output/
-coverage/
-docs/
-lib/
-node_modules/
+/.nyc_output/
+/build/
+/coverage/
+/docs/
+/lib/
+/node_modules/
+/types/
